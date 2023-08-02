@@ -1,0 +1,17 @@
+GMRESm.o
+NewtonHook.o
+parameters.o
+RPOSolve.o
+newton.mod
+parameters.mod
+rposolve.mod
+NewtonHook.f90~
+RPOSolve.f90~
+Lorenz/main
+Lorenz/guesses.dat
+Lorenz/soln.dat
+Lorenz/lorenz.f90
+Lorenz/lorenz.f90~
+Lorenz/lorenz.mod
+Lorenz/lorenz.o
+Lorenz/newton.mod
