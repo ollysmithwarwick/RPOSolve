@@ -171,7 +171,7 @@
       snrm = dsqrt(dotprod(n,s,s))
       ared = tol_ - new_tol
       pred = tol_ - gdel
-         
+
       if(info==1) then 
          print*,'newton: nits=',new_nits,' res=',real(new_tol), ' tol=',real(tol)
          print*,'newton: gits=',new_gits,' del=',real(new_del)

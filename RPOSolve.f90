@@ -1,5 +1,6 @@
 module RPOSolve
   use parameters
+  use Matrix
   implicit none
   type RPONewtonParams
      ! Derived type for concisely storing and passing RPOSolve parameters
@@ -230,7 +231,6 @@ contains
     real(dp), dimension(n) :: tmp
     real(dp) :: d, del, mndl, mxdl, tol, gtol
 
-    write(*,*) 'RPOSolve: initGuess = ', initGuess
     
     ! Sort out ndts/dt
     if (rpoParams%ndts == -1) then
@@ -415,5 +415,23 @@ contains
   subroutine saveGuessDefault()
     implicit none  
   end subroutine saveGuessDefault
+
+  subroutine RPOGetMatrix(n, ignore, m)
+    integer :: n, ignore
+    real(dp), dimension(n,n) :: m
+    call GetMatrix(n, ignore, multJ, m)
+  end subroutine RPOGetMatrix
+
+  subroutine RPOGetEigenvalues(n, A, eigVals, eigvecs)
+    integer :: n
+    real(dp), dimension(n,n) :: A
+    complex(dp), dimension(n) :: eigVals
+    complex(dp), dimension(n,n) :: eigVecs
+
+    write(*,*) 'RPOSolve: Getting eigenvalues, n', n
+    call GetEigenvalues(n, A, eigvals, eigvecs)
+!    call GetEigenvalues(n, A, eigvals)
+    write(*,*) 'RPOSolve: Found eigenvalues'
+  end subroutine RPOGetEigenvalues
 
 end module RPOSolve
